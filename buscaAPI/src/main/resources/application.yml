@@ -1,0 +1,12 @@
+spring:
+
+  # Database
+  datasource:
+    url: [URL]
+    username: [USERNAME]
+    password: [PASSWORD]
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: none # Read Only
