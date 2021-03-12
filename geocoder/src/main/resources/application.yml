@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: [URL]
+    username: [USERNAME]
+    password: [PASSWORD]
+
+custom:
+  maps_api_key: [YOUR_MAPS_API_KEY]
