@@ -1,0 +1,12 @@
+.Toast {
+    position: fixed;
+    bottom: 20px; right: 20px;
+
+    width: 430px;
+    z-index: 1;
+}
+
+.Toast .toast-action {
+    position: absolute;
+    top: 0; right: 0;
+}

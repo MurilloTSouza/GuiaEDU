@@ -1,0 +1,28 @@
+#map .zoom {
+    position: absolute;
+    top: 0; right: 0;
+    margin: 20px;
+
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#map .zoom button {
+    padding: 0 8px;
+
+    color: rgba(0, 0, 0, 0.54); /* material-ui secondary*/
+    font-size: 18px;
+    font-weight: bolder;
+
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+#map .zoom button:hover {
+    color: rgba(0, 0, 0, 0.87); /* material-ui primary*/
+    background-color: rgba(0, 0, 0, 0.08);
+}

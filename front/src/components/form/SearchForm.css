@@ -1,0 +1,16 @@
+.SearchForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.SearchForm .form-content {
+    padding: 20px;
+    overflow: hidden auto;
+    flex-grow: 1; /* fill remaning space */
+}
+
+.SearchForm .footer {
+    padding: 20px;
+    box-shadow: 0 -20px 20px rgba(0, 0, 0, 0.1);
+}

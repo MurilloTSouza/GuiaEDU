@@ -1,0 +1,9 @@
+.Conceitos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Conceitos .conceito {
+    flex: 1 1 0px;
+}

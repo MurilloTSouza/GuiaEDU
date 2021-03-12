@@ -1,0 +1,21 @@
+.MapPage {
+    height: 100%;
+}
+
+.MapPage .search-container {
+    width: 260px;
+    height: 100%;
+}
+
+.MapPage .map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.MapPage .badge-wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    margin: 20px;
+    z-index: 1;
+}
