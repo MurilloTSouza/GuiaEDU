@@ -11,6 +11,7 @@ import SwitchLabel from './input/switchLabel/SwitchLabel'
 
 import './SearchForm.css'
 
+// automaticSubmit option will update the result after any input change
 export default class SearchForm extends Component {
 
     constructor(props){
@@ -62,13 +63,17 @@ export default class SearchForm extends Component {
             .finally( this.setState({loading: false}) )
     }
 
+    automaticSubmit = () => {
+        if (this.props.automaticSubmit) this.handleSubmit();
+    }
+
     handleInputChange = (e) => {
         this.setState({
             formParams: {
                 ...this.state.formParams,
                 [e.target.name]: e.target.value
             }
-        })
+        }, this.automaticSubmit);
     }
 
     handleSwitchChange = (e) => {
@@ -84,7 +89,7 @@ export default class SearchForm extends Component {
         this.setState({formParams: {
             ...this.state.formParams,
             ...params
-        }});
+        }}, this.automaticSubmit);
     }
 
     handleSubmit = () => {
@@ -158,6 +163,21 @@ export default class SearchForm extends Component {
             />
         )
 
+        const submitButton = this.props.automaticSubmit
+            ? null
+            : ( 
+                <div className="footer">
+                    <Button fullWidth disabled={searching}
+                        color="primary"
+                        variant="contained"
+                        startIcon={<Search/>}
+                        onClick={this.handleSubmit}
+                    >
+                        Buscar
+                    </Button>
+                </div>
+            )
+
         const formContent = this.props.cursoOnly
             ? <> {cursoGroup} {localGroup} {iesGroup} </> // search curso only
             : <> {localGroup} {iesGroup} {switchLabel} {cursoGroup} </> // search ies and curso
@@ -169,16 +189,7 @@ export default class SearchForm extends Component {
                     {formContent}
                 </div>
 
-                <div className="footer">
-                    <Button fullWidth disabled={searching}
-                        color="primary"
-                        variant="contained"
-                        startIcon={<Search/>}
-                        onClick={this.handleSubmit}
-                    >
-                        Buscar
-                    </Button>
-                </div>
+                {submitButton}
 
             </div>
         )
