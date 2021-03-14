@@ -102,6 +102,8 @@ function addMarkers(data) {
     // remove current markers and add new ones
     if(currentMarkers) map.removeLayer(currentMarkers);
 
+    if(!data.length) return; // if data is empty, don't add markers
+
     var points = buildMarkers(data, MARKER_NAME);
     let source = new VectorSource({ features: points });
     let markers = new VectorLayer({ source: source });
