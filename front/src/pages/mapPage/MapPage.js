@@ -33,7 +33,6 @@ export default class MapPage extends Component {
     }
 
     handleSearchResult = (searchResult, infoType) => {
-        deselectCurrentMarker()
         this.setState({searchResult, infoType, selectedInfo: null})
     }
 
