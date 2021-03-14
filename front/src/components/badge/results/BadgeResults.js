@@ -4,10 +4,10 @@ import { OpenInNew } from '@material-ui/icons';
 
 export default function BadgeResults({quant, color, onClick}) {
 
-    let label = ( quant == 1 )
+    let label = ( quant === 1 )
         ? quant + " Resultado." 
         : quant + " Resultados."
-        
+
     label = label+" Ver no Ranking.";
 
     const onIconClick = () => {
