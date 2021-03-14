@@ -42,7 +42,7 @@ export default class SearchForm extends Component {
             options: [],
             error: null,
 
-            searchCurso: false
+            searchCurso: props.cursoOnly
         }
     }
 
@@ -113,7 +113,7 @@ export default class SearchForm extends Component {
         if(loading) return ( <Loading/> );
         if(error) return ( <Error msg={error}/> );
 
-        if(options.length<1) return null;
+        if(options.length<1) return null; // if options is empty
         
         const {regiao, estado, municipio,
             rede, administracao, organizacao,
@@ -126,32 +126,49 @@ export default class SearchForm extends Component {
             enade: [min_enade, max_enade], curso: [min_curso, max_curso],
             area, modalidade };
         
+        const localGroup = (
+            <LocalGroup
+                values={localValues}
+                options={options}
+                setParams={this.setParams}
+            />
+        )
+        const iesGroup = (
+            <IesGroup
+                values={iesValues}
+                options={options}
+                onInputChange={this.handleInputChange}
+            />
+        )
+
+        const cursoGroup = (
+            <CursoGroup active={searchCurso}
+                values={cursoValues}
+                options={options}
+                setParams={this.setParams}
+                onInputChange={this.handleInputChange}
+            />
+        )
+
+        const switchLabel = (
+            <SwitchLabel
+                label="Buscar por curso."
+                checked={searchCurso}
+                onChange={this.handleSwitchChange}
+            />
+        )
+
+        const formContent = this.props.cursoOnly
+            ? <> {cursoGroup} {localGroup} {iesGroup} </> // search curso only
+            : <> {localGroup} {iesGroup} {switchLabel} {cursoGroup} </> // search ies and curso
+
         return (
             <div className="SearchForm">
-                <div className="form-content" ref={this.formRef}>
-                    <LocalGroup
-                        values={localValues}
-                        options={options}
-                        setParams={this.setParams}
-                    />
-                    <IesGroup
-                        values={iesValues}
-                        options={options}
-                        onInputChange={this.handleInputChange}
-                    />
 
-                    <SwitchLabel
-                        label="Buscar por curso."
-                        checked={searchCurso}
-                        onChange={this.handleSwitchChange}
-                    />
-                    <CursoGroup active={searchCurso}
-                        values={cursoValues}
-                        options={options}
-                        setParams={this.setParams}
-                        onInputChange={this.handleInputChange}
-                    />
+                <div className="form-content" ref={this.formRef}>
+                    {formContent}
                 </div>
+
                 <div className="footer">
                     <Button fullWidth disabled={searching}
                         color="primary"
@@ -162,6 +179,7 @@ export default class SearchForm extends Component {
                         Buscar
                     </Button>
                 </div>
+
             </div>
         )
     }
