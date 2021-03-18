@@ -9,7 +9,7 @@ export default function IconDivisor({label, icon, active}) {
     const Icon = icon;
 
     return (
-        <Grid container>
+        <Grid container style={{paddingTop: '10px'}}>
 
             <Grid item>
                 <Icon color={iconColor} style={{marginLeft: '-2px'}}/>

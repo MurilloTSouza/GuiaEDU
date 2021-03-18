@@ -2,7 +2,7 @@ import React from 'react'
 import { FormControlLabel, Switch } from '@material-ui/core';
 
 const switchControlStyle = {
-    margin: '10px 0',
+    margin: 0, 
     width: '100%',
     borderRadius: '20px',
 };

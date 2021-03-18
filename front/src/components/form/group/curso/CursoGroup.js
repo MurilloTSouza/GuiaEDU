@@ -21,7 +21,7 @@ export default function CursoGroup({values, options, setParams, onInputChange, a
     }
 
     return (
-        <>
+        <div className="form-group">
             <CursoDivisor active={active}/>
             
             <Selector disabled={!active} required
@@ -47,6 +47,6 @@ export default function CursoGroup({values, options, setParams, onInputChange, a
                 values={values.curso}
                 onChange={handleCursoChange}
             />
-        </>
+        </div>
     )
 }

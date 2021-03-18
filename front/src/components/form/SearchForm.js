@@ -43,7 +43,8 @@ export default class SearchForm extends Component {
             options: [],
             error: null,
 
-            searchCurso: props.cursoOnly
+            // set to false if not defined, instead of undefined
+            searchCurso: (props.cursoOnly===true)
         }
     }
 
@@ -63,17 +64,13 @@ export default class SearchForm extends Component {
             .finally( this.setState({loading: false}) )
     }
 
-    automaticSubmit = () => {
-        if (this.props.automaticSubmit) this.handleSubmit();
-    }
-
     handleInputChange = (e) => {
         this.setState({
             formParams: {
                 ...this.state.formParams,
                 [e.target.name]: e.target.value
             }
-        }, this.automaticSubmit);
+        });
     }
 
     handleSwitchChange = (e) => {
@@ -89,15 +86,19 @@ export default class SearchForm extends Component {
         this.setState({formParams: {
             ...this.state.formParams,
             ...params
-        }}, this.automaticSubmit);
+        }});
     }
 
     handleSubmit = () => {
         this.setState({searching: true})
         const {searchCurso, formParams} = this.state;
+        const {pagination} = this.props;
 
-        let path = searchCurso ? 'curso' : 'ies';
-        let query = this.buildQuery(formParams);
+        // conditional path
+        let path = searchCurso ? 'curso/' : 'ies/';
+        path = pagination ? path+'page/' : path;
+
+        let query = this.buildQuery({...formParams, ...pagination});
         let url = 'http://localhost:8080/api/search/'+path+'?'+query;
 
         axios.get(url)
@@ -113,7 +114,21 @@ export default class SearchForm extends Component {
             })
     }
 
+    // if is automaticSubmit and a form parameter is changed
+    // this.handleSubmit is called making a new search and
+    // sending results to this.props.onResult
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.automaticSubmit) {
+            var formHasChanged = 
+                (this.state.formParams !== prevState.formParams)
+                || (this.props.pagination !== prevProps.pagination)
+
+            if(formHasChanged) this.handleSubmit();
+        }
+    }
+
     render() {
+
         const {searching, loading, error, options, searchCurso} = this.state;
         if(loading) return ( <Loading/> );
         if(error) return ( <Error msg={error}/> );
@@ -155,32 +170,43 @@ export default class SearchForm extends Component {
             />
         )
 
-        const switchLabel = (
-            <SwitchLabel
-                label="Buscar por curso."
-                checked={searchCurso}
-                onChange={this.handleSwitchChange}
-            />
-        )
+        const switchLabel = this.props.cursoOnly
+            ? null
+            : (
+                <div style={{marginBottom: '12px'}}>
+                    <SwitchLabel
+                        label="Buscar por curso."
+                        checked={searchCurso}
+                        onChange={this.handleSwitchChange}
+                    />
+                </div>
+            )
 
         const submitButton = this.props.automaticSubmit
             ? null
             : ( 
-                <div className="footer">
-                    <Button fullWidth disabled={searching}
-                        color="primary"
-                        variant="contained"
-                        startIcon={<Search/>}
-                        onClick={this.handleSubmit}
-                    >
-                        Buscar
-                    </Button>
-                </div>
+                <Button fullWidth disabled={searching}
+                    color="primary"
+                    variant="contained"
+                    startIcon={<Search/>}
+                    onClick={this.handleSubmit}
+                >
+                    Buscar
+                </Button>
             )
 
         const formContent = this.props.cursoOnly
             ? <> {cursoGroup} {localGroup} {iesGroup} </> // search curso only
-            : <> {localGroup} {iesGroup} {switchLabel} {cursoGroup} </> // search ies and curso
+            : <> {localGroup} {iesGroup} {cursoGroup} </> // search ies and curso
+
+        
+        // render footer if will render submitButton or switchLabel
+        const footer = (submitButton || switchLabel)
+                ? ( <div className="footer">
+                    {switchLabel}
+                    {submitButton}
+                </div> )
+                : null
 
         return (
             <div className="SearchForm">
@@ -189,8 +215,8 @@ export default class SearchForm extends Component {
                     {formContent}
                 </div>
 
-                {submitButton}
-
+                {footer}
+                
             </div>
         )
     }

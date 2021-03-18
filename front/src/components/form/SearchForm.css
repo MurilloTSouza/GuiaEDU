@@ -5,12 +5,17 @@
 }
 
 .SearchForm .form-content {
-    padding: 20px;
+    padding: 12px 24px;
     overflow: hidden auto;
     flex-grow: 1; /* fill remaning space */
 }
 
+.SearchForm .form-group {
+    margin-bottom: 24px;
+}
+
 .SearchForm .footer {
-    padding: 20px;
-    box-shadow: 0 -20px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    padding-top: 12px;
+    box-shadow: 0 -24px 24px rgba(0, 0, 0, 0.1);
 }

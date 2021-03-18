@@ -7,7 +7,7 @@ const styles = {
     fullWidth: {width: '100%'}
 };
 
-export default function Selector({name, label, value, onChange, options, required, disabled}) {
+export default function Selector({name, label, value, onChange, options, labelOpts, required, disabled}) {
 
     // Empty value if is not required
     let emptyLabel = 'Qualquer '+label;
@@ -20,6 +20,12 @@ export default function Selector({name, label, value, onChange, options, require
             return ( <MenuItem value={opt} key={opt}> {opt} </MenuItem> )
         })
         : null;
+    
+    let items = labelOpts 
+        ? labelOpts.map( item => {
+            return ( <MenuItem value={item.value} key={item.id}>{item.label}</MenuItem>)
+        })
+        : null ;
 
     return (
         <div className="Selector">
@@ -37,6 +43,7 @@ export default function Selector({name, label, value, onChange, options, require
 
                 {emptyOption}
                 {opts}
+                {items}
 
             </Select>
 

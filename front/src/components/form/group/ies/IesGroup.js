@@ -4,7 +4,7 @@ import Selector from '../../input/selector/Selector'
 
 export default function IesGroup({values, options, onInputChange}) {
     return (
-        <>
+        <div className="form-group">
             <IesDivisor active/>
             <Selector
                 name='rede'
@@ -25,6 +25,6 @@ export default function IesGroup({values, options, onInputChange}) {
                 options={options.administracoes}
                 onChange={onInputChange} />
             
-        </>
+        </div>
     )
 }

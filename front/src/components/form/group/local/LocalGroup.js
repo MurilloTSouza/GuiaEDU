@@ -35,7 +35,7 @@ export default function LocalGroup({values, options, setParams}) {
     }
 
     return (
-        <>
+        <div className="form-group">
             <LocalDivisor active/>
             <Selector required
                 name='regiao'
@@ -55,6 +55,6 @@ export default function LocalGroup({values, options, setParams}) {
                 value={values.municipio}
                 options={municipios}
                 onChange={handleMunicipioChange} />
-        </>
+        </div>
     )
 }

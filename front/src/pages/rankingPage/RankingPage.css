@@ -1,0 +1,29 @@
+.RankingPage {
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.tools .tool {
+    max-width: 240px;
+    margin-left: 12px;
+}
+
+.pagination {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/* make page buttons fill width */
+.pagination li {
+    flex-grow: 1;
+    text-align: center;
+}
+
