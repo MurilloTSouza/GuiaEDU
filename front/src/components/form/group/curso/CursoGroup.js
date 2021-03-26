@@ -4,7 +4,7 @@ import SliderEnade from '../../input/rangeSlider/SliderEnade'
 import Selector from '../../input/selector/Selector'
 import CursoDivisor from './CursoDivisor'
 
-export default function CursoGroup({values, options, setParams, onInputChange, active}) {
+export default function CursoGroup({values, options, setParams, onInputChange, active, conceito}) {
     
     const handleEnadeChange = (values) => {
         setParams({
@@ -19,6 +19,22 @@ export default function CursoGroup({values, options, setParams, onInputChange, a
             max_curso: values[1]
         })
     }
+
+    const sliders = conceito
+        ? (
+            <>
+                <SliderEnade disabled={!active}
+                    values={values.enade}
+                    onChange={handleEnadeChange}
+                />
+
+                <SliderCurso disabled={!active}
+                    values={values.curso}
+                    onChange={handleCursoChange}
+                />
+            </>
+        )
+        : null
 
     return (
         <div className="form-group">
@@ -38,15 +54,8 @@ export default function CursoGroup({values, options, setParams, onInputChange, a
                 options={options.modalidades}
                 onChange={onInputChange} />
 
-            <SliderEnade disabled={!active}
-                values={values.enade}
-                onChange={handleEnadeChange}
-            />
+            {sliders}
 
-            <SliderCurso disabled={!active}
-                values={values.curso}
-                onChange={handleCursoChange}
-            />
         </div>
     )
 }

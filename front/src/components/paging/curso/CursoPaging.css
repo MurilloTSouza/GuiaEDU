@@ -1,0 +1,13 @@
+.CursoPaging {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.CursoPaging .content {
+    margin-top: 12px;
+}
+
+.CursoPaging ul.MuiPagination-ul {
+    width: 100%;
+    justify-content: space-around;
+}

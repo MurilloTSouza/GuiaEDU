@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Divider, Typography } from '@material-ui/core';
-import Conceitos from '../../conceitos/Conceitos';
+import ConceitosFaixa from '../../conceitos/conceito/faixa/ConceitosFaixa';
 
 import './CursoListItem.css'
 
@@ -20,7 +20,7 @@ export default function CursoListItem({curso, withDivider}) {
                     </Box>
                 </Typography>
 
-                <Conceitos enade={enadeValue} curso={cursoValue}/>
+                <ConceitosFaixa enade={enadeValue} curso={cursoValue}/>
             </div>
             { withDivider && <Divider />}
         </>

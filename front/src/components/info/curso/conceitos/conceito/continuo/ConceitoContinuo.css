@@ -1,0 +1,10 @@
+.ConceitoContinuo {
+    width: 120px;
+    padding: 12px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+}

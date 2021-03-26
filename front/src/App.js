@@ -16,7 +16,7 @@ export default function App() {
           <Navbar />
         </div>
 
-        <div className="content">
+        <div id="app-content">
           <Switch>
             <Route exact path="/" component={MapPage} />
             <Route path="/ranking" component={RankingPage} />

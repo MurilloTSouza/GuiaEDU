@@ -92,13 +92,11 @@ export default class SearchForm extends Component {
     handleSubmit = () => {
         this.setState({searching: true})
         const {searchCurso, formParams} = this.state;
-        const {pagination} = this.props;
 
         // conditional path
-        let path = searchCurso ? 'curso/' : 'ies/';
-        path = pagination ? path+'page/' : path;
+        let path = searchCurso ? 'curso' : 'ies';
 
-        let query = this.buildQuery({...formParams, ...pagination});
+        let query = this.buildQuery({...formParams});
         let url = 'http://localhost:8080/api/search/'+path+'?'+query;
 
         axios.get(url)
@@ -121,15 +119,14 @@ export default class SearchForm extends Component {
         if(this.props.automaticSubmit) {
             var formHasChanged = 
                 (this.state.formParams !== prevState.formParams)
-                || (this.props.pagination !== prevProps.pagination)
 
             if(formHasChanged) this.handleSubmit();
         }
     }
 
     render() {
-
         const {searching, loading, error, options, searchCurso} = this.state;
+        const {ranking} = this.props;
         if(loading) return ( <Loading/> );
         if(error) return ( <Error msg={error}/> );
 
@@ -162,7 +159,9 @@ export default class SearchForm extends Component {
         )
 
         const cursoGroup = (
-            <CursoGroup active={searchCurso}
+            <CursoGroup 
+                conceito={!ranking}
+                active={searchCurso}
                 values={cursoValues}
                 options={options}
                 setParams={this.setParams}

@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomAccordion from '../../customAccoordion/CustomAccordion';
-import Conceitos from '../../info/curso/conceitos/Conceitos';
+import ConceitosFaixa from '../../info/curso/conceitos/conceito/faixa/ConceitosFaixa';
 import IesInfoList from '../../info/ies/iesInfos/IesInfos';
 import Title from '../../title/Title'
 import Card from '../Card';
@@ -12,7 +12,7 @@ export default function CursoCard({curso}) {
 
     const header = (<>
         <Title variant="h6" textAlign="center">{curso.area}</Title>
-        <Conceitos enade={enadeValue} curso={cursoValue}/>
+        <ConceitosFaixa enade={enadeValue} curso={cursoValue}/>
     </>)
 
     const ies = curso.instituicao;

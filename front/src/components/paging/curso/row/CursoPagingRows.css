@@ -1,0 +1,4 @@
+.CursoPagingRows {
+    display: flex;
+    flex-direction: column;
+}

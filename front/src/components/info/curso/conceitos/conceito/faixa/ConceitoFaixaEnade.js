@@ -1,9 +1,9 @@
 import React from 'react'
-import ConceitoInfo from './ConceitoInfo'
+import ConceitoFaixa from './ConceitoFaixa'
 
-export default function ConceitoEnadeInfo({value}) {
+export default function ConceitoFaixaEnade({value}) {
     return (
-        <ConceitoInfo
+        <ConceitoFaixa
             label="Conceito Enade"
             value={value}
             color="#ffb400"
