@@ -130,7 +130,7 @@ public class SearchController {
     public ResponseEntity<List<Curso>> searchCurso(
             @And({
                     @Spec(path = "codCurso", params = "cod_curso", spec = Equal.class),
-                    @Spec(path = "area", spec = LikeIgnoreCase.class),
+                    @Spec(path = "area", spec = Equal.class),
                     @Spec(path = "modalidade", spec = LikeIgnoreCase.class),
 
                     @Spec(path = "conceitoEnade.faixa", params = "enade", spec = Equal.class),
@@ -192,7 +192,7 @@ public class SearchController {
     public ResponseEntity<Page<Curso>> searchCursoPage(
             @And({
                     @Spec(path = "codCurso", params = "cod_curso", spec = Equal.class),
-                    @Spec(path = "area", spec = LikeIgnoreCase.class),
+                    @Spec(path = "area", spec = Equal.class),
                     @Spec(path = "modalidade", spec = LikeIgnoreCase.class),
 
                     @Spec(path = "conceitoEnade.faixa", params = "enade", spec = Equal.class),
