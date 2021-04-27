@@ -1,6 +1,5 @@
 import React from 'react'
 import { Chip } from '@material-ui/core';
-import { OpenInNew } from '@material-ui/icons';
 
 export default function BadgeResults({quant, color}) {
 
