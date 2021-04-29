@@ -7,3 +7,16 @@
     width: 100%;
     padding-top: 60px;
 }
+
+.selection-box {
+    max-width: 500px;
+    padding: 50px;
+    padding-top: 50px;
+    margin: auto; /* center */
+}
+
+.selection-box .select {
+    width: 80%;
+    margin: auto; /* center */
+    margin-bottom: 20px;
+}

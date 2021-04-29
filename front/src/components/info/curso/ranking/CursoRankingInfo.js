@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Divider, Grid } from '@material-ui/core';
+import { Divider, Grid } from '@material-ui/core';
 import Title from '../../../title/Title';
 import ConceitoContinuoEnade from '../conceitos/conceito/continuo/ConceitoContinuoEnade';
 import ConceitoContinuoCurso from '../conceitos/conceito/continuo/ConceitoContinuoCurso';
