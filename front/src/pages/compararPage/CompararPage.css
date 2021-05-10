@@ -6,6 +6,7 @@
     min-height: 100%;
     width: 100%;
     padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .selection-box {

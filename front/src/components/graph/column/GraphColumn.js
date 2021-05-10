@@ -17,7 +17,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        backgroundColor: 'rgba(0,0,0,0.06)',
         marginTop: '24px', //extra space to quant label when 100%
     },
     quant: {
@@ -35,7 +35,7 @@ export default function GraphColumn({values, max, label, color}) {
 
     const barValueStyle = {
         height: percentage+"%",
-        transition: "height 2s",
+        transition: "height 1s",
         backgroundColor: color
     };
 

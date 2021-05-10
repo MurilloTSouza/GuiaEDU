@@ -3,12 +3,12 @@ import { Typography } from '@material-ui/core'
 
 const styles = {
     integerValue: {
-        fontSize: '48px',
+        fontSize: '56px',
         lineHeight: '60px'
     },
 
     decimalValue: {
-        fontSize: '24px',
+        fontSize: '32px',
     }
 }
 
@@ -23,7 +23,7 @@ export default function Decimal({value}) {
     const decimal = strValues[1] ? '.'+strValues[1] : '';
 
     return (
-        <Typography component="div" style={{fontWeight: "bolder"}}>
+        <Typography component="div">
             <span style={styles.integerValue}>
                 {integer}
             </span>

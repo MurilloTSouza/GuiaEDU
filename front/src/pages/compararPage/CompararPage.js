@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Selector from '../../components/form/input/selector/Selector';
-import { Typography } from '@material-ui/core';
+import { Modal, Typography } from '@material-ui/core';
 import CompareGroup from '../../components/compare/CompareGroup';
 import Loading from '../../components/progress/loading/Loading';
 
@@ -24,7 +24,7 @@ export default class CompararPage extends Component {
     componentDidMount(){
         this.setState({isLoading: true})
 
-        axios.get('http://192.168.0.106:8080/api/options')
+        axios.get('http://localhost:8080/api/options')
             .then( res => {
                 this.setState({
                     options: res.data.areas,
@@ -48,7 +48,7 @@ export default class CompararPage extends Component {
             isLoading: true
         })
 
-        let url = 'http://192.168.0.106:8080/api/search/curso';
+        let url = 'http://localhost:8080/api/search/curso';
         url = (area === '') 
             ? url
             : url+'?area='+area;
@@ -76,10 +76,6 @@ export default class CompararPage extends Component {
     render() {
         const {area, data, options, isLoading} = this.state;
 
-        let content = isLoading
-            ? <Loading />
-            : <CompareGroup data={data}/>
-
         return (
             <div className="CompararPage">
 
@@ -100,7 +96,9 @@ export default class CompararPage extends Component {
                     </Typography>
                 </div>
 
-                {content}
+                <CompareGroup data={data} area={area}/>
+
+                <Modal open={isLoading}><Loading /></Modal>
             </div>
         )
     }
