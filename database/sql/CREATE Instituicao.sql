@@ -1,10 +1,11 @@
-﻿CREATE TABLE instituicao
+﻿CREATE TABLE Instituicao
 (
   cod_ies integer NOT NULL,
   cod_municipio character varying(8) NOT NULL,
 
   nome_ies character varying(100) NOT NULL,
   sigla_ies character varying(50),
+
   municipio character varying(100) NOT NULL,
   regiao character varying(20),
   estado character varying(30),
