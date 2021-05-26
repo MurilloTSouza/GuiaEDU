@@ -1,32 +1,17 @@
 import React from 'react'
-import CompareItem from './compareItem/CompareItem';
-import GenericCompare from './GenericCompare';
+import Compare from './Compare';
 
 export default function ModalidadeCompare({data, area}) {
-    
-    const modalidades = ['A Distância', 'Presencial'];
 
-    let items = modalidades.map( modalidade => {
-        
-        let cursos = data.filter( c => {
-            return c.modalidade === modalidade
-                && c.conceitoEnade.faixa !== 0
-        })
-
-        let conceitos = cursos.map( c => c.conceitoEnade.faixa )
-
-        return <CompareItem key={modalidade}
-                    label={modalidade}
-                    values={conceitos} />
-    })
-
-    console.log(data)
+    const regioes = ['Presencial', 'A Distância'];
 
     return (
-        <GenericCompare 
-            title="Modalidade de Ensino" 
-            area={area}
-            items={items}
+        <Compare
+            title="Modalidade de ensino"
+            subtitle={"("+area+")"}
+            data={data}
+            options={regioes}
+            getValue={(c) => {return c.modalidade}}
         />
     )
 }
