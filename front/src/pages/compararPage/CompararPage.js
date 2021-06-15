@@ -24,7 +24,7 @@ export default class CompararPage extends Component {
     componentDidMount(){
         this.setState({isLoading: true})
 
-        axios.get('http://192.168.0.106:8080/api/options')
+        axios.get('http://localhost:8080/api/options')
             .then( res => {
                 this.setState({
                     options: res.data.areas,
@@ -48,7 +48,7 @@ export default class CompararPage extends Component {
             isLoading: true
         })
 
-        let url = 'http://192.168.0.106:8080/api/search/curso';
+        let url = 'http://localhost:8080/api/search/curso';
         url = (area === '') 
             ? url
             : url+'?area='+area;

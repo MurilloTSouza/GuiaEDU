@@ -1,4 +1,5 @@
 import React from 'react'
+import Slide from '../graph2/Slide'
 import Slideshow from '../slideshow/Slideshow'
 import CompareItem from './compareItem/CompareItem'
 import CompareItems from './CompareItems'
@@ -35,6 +36,7 @@ export default function Compare({title, subtitle, data, options, getValue}) {
     })
 
     const slides = [
+        <Slide title={title} subtitle={subtitle} data={data} options={options} getValue={getValue}/>,
         <CompareItems enade title={title} subtitle={subtitle}> {enades} </CompareItems>,
         <CompareItems cpc  title={title} subtitle={subtitle}> {cpcs} </CompareItems>
     ]

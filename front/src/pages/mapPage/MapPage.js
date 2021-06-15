@@ -53,10 +53,14 @@ export default class MapPage extends Component {
             ? <IesCard ies={selectedInfo} />
             : <CursoCard curso={selectedInfo} />
 
-        // rendering quantity of results
-        const bagdeResults = searchResult
-            ? <BadgeResults quant={searchResult.length} color="primary"/>
-            : null        
+        var bagdeResults = null;
+        if( searchResult ) {
+            var quant = searchResult.length
+                ? searchResult.length
+                : 0;
+            
+            bagdeResults = <BadgeResults quant={quant} color="primary"/>
+        }
 
         return (
             <div className="MapPage">

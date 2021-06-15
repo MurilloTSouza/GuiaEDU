@@ -4,6 +4,7 @@ import Label from '../label/Label';
 
 const styles = {
     wrapper: {
+        height: '380px',
         padding: '32px 0',
         backgroundImage: 'linear-gradient(transparent 60%, white)'
     },
@@ -41,7 +42,7 @@ export default function CompareItems({title, subtitle, enade, cpc, children}) {
                     {label}
                 </div>
 
-                <div style={styles.wrapper}>
+                <div style={{padding: '32px 0'}}>
 
                     <div style={styles.items}>
                         {children}

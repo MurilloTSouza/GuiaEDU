@@ -8,7 +8,7 @@ export default function BadgeResults({quant, color}) {
         : quant + " Resultados."
 
     // display red if 0 results
-    if(quant === 0){ color = {color: 'secondary'} }
+    if(quant === 0){ color = 'secondary' }
 
     return (
         <Chip

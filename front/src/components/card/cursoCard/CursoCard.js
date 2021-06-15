@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core';
 import CustomAccordion from '../../customAccoordion/CustomAccordion';
 import ConceitosFaixa from '../../info/curso/conceitos/conceito/faixa/ConceitosFaixa';
 import IesInfoList from '../../info/ies/iesInfos/IesInfos';
@@ -12,6 +13,7 @@ export default function CursoCard({curso}) {
 
     const header = (<>
         <Title variant="h6" textAlign="center">{curso.area}</Title>
+        <Typography variant="caption" align="center" display="block">({curso.modalidade})</Typography>
         <ConceitosFaixa enade={enadeValue} curso={cursoValue}/>
     </>)
 

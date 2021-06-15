@@ -24,8 +24,9 @@ const styles = {
 export default function CompareItem({values, label, pink}) {
 
     const sum = values.reduce((a, b) => a + b, 0);
-    const average = (sum / values.length) || 0;
-    const total = values.length;
+    const quant = values.length;
+    let avg = Math.floor((sum/quant)*100)/100;
+    if(Number.isNaN(avg)){ avg = 0; }
 
     const color = pink ? "#e91e63" : "#ffb400" ;
 
@@ -35,12 +36,12 @@ export default function CompareItem({values, label, pink}) {
 
             <Typography style={styles.label}>{label}</Typography>
 
-            <Decimal value={average}/>
+            <Decimal value={avg}/>
 
             <Rating readOnly style={{color}}
-                value={average} precision={0.1}/>
+                value={avg} precision={0.1}/>
             
-            <Typography variant="caption">Média de {total} cursos</Typography>
+            <Typography variant="caption">Média de {quant} cursos</Typography>
         </div>
     )
 }

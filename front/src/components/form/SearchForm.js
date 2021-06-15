@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Modal } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
 import axios from 'axios'
 import Error from '../progress/error/Error'
@@ -38,7 +38,6 @@ export default class SearchForm extends Component {
                 max_curso: 5
             },
             
-            searching: false,
             loading: true,
             options: [],
             error: null,
@@ -49,6 +48,8 @@ export default class SearchForm extends Component {
     }
 
     componentDidMount(){
+        this.setState({loading: true})
+
         axios.get('http://localhost:8080/api/options')
             .then( res => {
                 this.setState( {
@@ -58,10 +59,15 @@ export default class SearchForm extends Component {
                         area: res.data.areas[0] // initial value to required input
                     },
                     options: res.data,
-                    error: null} )
+                    loading: false,
+                    error: null
+                } )
             })
-            .catch( err => {this.setState( {error: 'Erro de conexão com API de busca'} )} )
-            .finally( this.setState({loading: false}) )
+            .catch( err => {
+                this.setState( {
+                    error: 'Erro de conexão com API de busca',
+                    loading: false
+                } )} )
     }
 
     handleInputChange = (e) => {
@@ -90,7 +96,7 @@ export default class SearchForm extends Component {
     }
 
     handleSubmit = () => {
-        this.setState({searching: true})
+        this.setState({loading: true})
         const {searchCurso, formParams} = this.state;
 
         // conditional path
@@ -101,14 +107,17 @@ export default class SearchForm extends Component {
 
         axios.get(url)
             .then( res => {
-                this.setState({error: null})
+                this.setState({
+                    error: null,
+                    loading: false
+                })
                 this.props.onResult(res.data, path) // passing result to parent
             })
             .catch( err => {
-                this.setState({error: "Erro na busca."})
-            })
-            .finally(()=>{
-                this.setState({searching: false})
+                this.setState({
+                    error: "Erro na busca.",
+                    loading: false
+                })
             })
     }
 
@@ -125,9 +134,8 @@ export default class SearchForm extends Component {
     }
 
     render() {
-        const {searching, loading, error, options, searchCurso} = this.state;
+        const {loading, error, options, searchCurso} = this.state;
         const {ranking} = this.props;
-        if(loading) return ( <Loading/> );
         if(error) return ( <Error msg={error}/> );
 
         if(options.length<1) return null; // if options is empty
@@ -184,7 +192,7 @@ export default class SearchForm extends Component {
         const submitButton = this.props.automaticSubmit
             ? null
             : ( 
-                <Button fullWidth disabled={searching}
+                <Button fullWidth disabled={loading}
                     color="primary"
                     variant="contained"
                     startIcon={<Search/>}
@@ -215,6 +223,8 @@ export default class SearchForm extends Component {
                 </div>
 
                 {footer}
+
+                <Modal open={loading}><Loading /></Modal>
                 
             </div>
         )

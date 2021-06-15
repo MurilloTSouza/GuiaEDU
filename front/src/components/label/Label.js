@@ -4,15 +4,15 @@ import { Typography } from '@material-ui/core'
 const style = {
     display: 'inline',
     padding: '6px 12px',
-    border: '2px solid',
-    borderRadius: '16px'
+    borderRadius: '16px',
+    fontWeight: 'bold'
 }
 
 export default function Label({color, children}) {
 
     const dynStyle = {
-        color: color,
-        borderColor: color
+        color: "white",
+        backgroundColor: color
     }
 
     return (

@@ -11,6 +11,7 @@ import './map-ol.css'
 
 const VIEW_CENTER = [-54, -16]; //Brazil
 const INITIAL_ZOOM = 4;
+const MAX_ZOOM = 18;
 
 // used to idenfity type of feature
 const MARKER_NAME = 'MARKER';
@@ -36,7 +37,7 @@ export const renderMap = (onSelect) => {
         target: 'map',
         layers:[ new TileLayer( {source: new OSM()} ) ],
         controls:[ new Zoom( {className: 'zoom'} )],
-        view: new View( {center: fromLonLat(VIEW_CENTER), zoom: INITIAL_ZOOM} )
+        view: new View( {center: fromLonLat(VIEW_CENTER), zoom: INITIAL_ZOOM, maxZoom: MAX_ZOOM} )
     })
 
     // onClick in marker call onSelect method

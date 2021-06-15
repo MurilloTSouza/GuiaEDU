@@ -1,7 +1,7 @@
 import React from 'react'
-import { AppBar, Toolbar } from '@material-ui/core'
-import Title from '../../components/title/Title'
+import { AppBar, Toolbar} from '@material-ui/core'
 import CustomNavLink from './CustomNavLink/CustomNavLink'
+import Logo from './logo/Logo'
 
 import './Navbar.css'
 
@@ -19,9 +19,7 @@ export default function Navbar() {
             <Toolbar>
 
                 <div className="nav-title">
-                    <Title color="text.primary" variant="h5">
-                        TITLE
-                    </Title>
+                    <Logo />
                 </div>
 
                 <CustomNavLink exact to="/"> MAPA </CustomNavLink>

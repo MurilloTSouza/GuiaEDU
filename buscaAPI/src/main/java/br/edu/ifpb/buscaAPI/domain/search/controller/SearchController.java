@@ -153,7 +153,7 @@ public class SearchController {
 
                     @Spec(path = "instituicao.organizacao", params = "organizacao", spec = LikeIgnoreCase.class),
                     @Spec(path = "instituicao.rede", params = "rede", spec = LikeIgnoreCase.class),
-                    @Spec(path = "instituicao.administracao", params = "adminsitracao", spec = LikeIgnoreCase.class)
+                    @Spec(path = "instituicao.administracao", params = "administracao", spec = LikeIgnoreCase.class)
             })
             Specification<Curso> cursoSpec){
         return ResponseEntity.ok(cursoService.search(cursoSpec));
