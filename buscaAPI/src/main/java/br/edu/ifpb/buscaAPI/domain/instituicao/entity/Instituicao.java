@@ -41,9 +41,9 @@ public class Instituicao {
     private List<Curso> cursos;
 
     public List<String> getTelefones() {
-        return telefones == null ? null : Arrays.asList(telefones.split(";"));
+        return telefones == null ? null : Arrays.asList(telefones.split(","));
     }
     public List<String> getEmails() {
-        return emails == null ? null : Arrays.asList(emails.split(";", -1));
+        return emails == null ? null : Arrays.asList(emails.split(",", -1));
     }
 }

@@ -50,7 +50,7 @@ export default class SearchForm extends Component {
     componentDidMount(){
         this.setState({loading: true})
 
-        axios.get('http://localhost:8080/api/options')
+        axios.get('http://localhost:8081/api/options')
             .then( res => {
                 this.setState( {
                     formParams: {
@@ -103,7 +103,7 @@ export default class SearchForm extends Component {
         let path = searchCurso ? 'curso' : 'ies';
 
         let query = this.buildQuery({...formParams});
-        let url = 'http://localhost:8080/api/search/'+path+'?'+query;
+        let url = 'http://localhost:8081/api/search/'+path+'?'+query;
 
         axios.get(url)
             .then( res => {

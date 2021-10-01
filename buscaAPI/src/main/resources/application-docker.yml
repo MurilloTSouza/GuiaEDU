@@ -1,0 +1,12 @@
+spring:
+
+  # Database
+  datasource:
+    url: jdbc:postgresql://db:5432/guiaedu
+    username: guiaedu
+    password: guiaedu
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: none # Read Only
